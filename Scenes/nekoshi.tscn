@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://x1rdol7qkaa"]
+
+[ext_resource type="Script" path="res://Scripts/nekoshi.gd" id="1_1s1yb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_04j3j"]
+
+[node name="Nekoshi" type="CharacterBody3D"]
+script = ExtResource("1_1s1yb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_04j3j")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
