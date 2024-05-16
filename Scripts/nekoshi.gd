@@ -1,5 +1,8 @@
 extends CharacterBody3D
+signal LanePosition(lanePos: Vector2i)
+signal UpdateLife(life: int)
 
+var life: int = 3
 #MOVEMENT
 @export var speed = 2
 const LANE_DISTANCE = 0.65
@@ -19,6 +22,33 @@ func _input(event):
 		if event.is_pressed():
 			_swipeStart = event.position
 		else:
-			print("algo")
-		#ejecutar calculate swipe
-		#emitir la senial
+			CalculateSwipe(event.position)
+			LanePosition.emit(_lanePos)
+
+func CalculateSwipe(_swipeEnd: Vector2):
+	if(_swipeStart == Vector2.ZERO): return
+	var swipe = _swipeEnd - _swipeStart
+	if(abs(swipe.x) > _swipeLenght):
+		if(swipe.x > 0): MoveRight()
+		else: MoveLeft()
+	elif (abs(swipe.y)> _swipeLenght):
+		if (swipe.y < 0): MoveUp()
+		else: MoveDown()
+
+func TakeDamage(damage: int):
+	life = life - damage
+	UpdateLife.emit()
+	if(life <= 0): queue_free()
+
+func MoveUp():
+	_lanePos.y += 1
+	if (_lanePos.y == 2): _lanePos.y = 1
+func MoveDown():
+	_lanePos.y -= 1
+	if(_lanePos.y == -2): _lanePos.y = -1
+func MoveRight():
+	_lanePos.x -= 1
+	if (_lanePos.x == -2): _lanePos.x = -1
+func MoveLeft():
+	_lanePos.x += 1
+	if (_lanePos.x == 2): _lanePos.x = 1
