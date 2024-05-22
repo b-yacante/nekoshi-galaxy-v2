@@ -14,8 +14,10 @@ shape = SubResource("BoxShape3D_04j3j")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="CameraPivot" type="Marker3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 far = 8000.0
 script = ExtResource("2_77pp0")
 
-[connection signal="LanePosition" from="." to="Camera3D" method="_on_nekoshi_lane_position"]
+[connection signal="LanePosition" from="." to="CameraPivot/Camera3D" method="_on_nekoshi_lane_position"]

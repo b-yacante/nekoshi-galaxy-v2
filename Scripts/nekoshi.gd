@@ -9,13 +9,14 @@ const LANE_DISTANCE = 0.65
 var _lanePos =  Vector2i(0,0) # -1: left/up | 0: middle | 1: right/down
 var targetVelocity
 #SWIPE
-var _swipeLenght = 100
+var _swipeLength = 100
 var _swipeStart = Vector2.ZERO
 var isSwiping = false
 
 func _physics_process(delta):
 	var targetPosition = Vector3(_lanePos.x * LANE_DISTANCE, _lanePos.y, global_position.z)
 	var new_position = position.lerp(targetPosition, speed * delta)
+	global_position = new_position
 
 func _input(event):
 	if  event is InputEventMouseButton:
@@ -28,10 +29,10 @@ func _input(event):
 func CalculateSwipe(_swipeEnd: Vector2):
 	if(_swipeStart == Vector2.ZERO): return
 	var swipe = _swipeEnd - _swipeStart
-	if(abs(swipe.x) > _swipeLenght):
+	if(abs(swipe.x) > _swipeLength):
 		if(swipe.x > 0): MoveRight()
 		else: MoveLeft()
-	elif (abs(swipe.y)> _swipeLenght):
+	elif (abs(swipe.y)> _swipeLength):
 		if (swipe.y < 0): MoveUp()
 		else: MoveDown()
 
@@ -47,8 +48,8 @@ func MoveDown():
 	_lanePos.y -= 1
 	if(_lanePos.y == -2): _lanePos.y = -1
 func MoveRight():
-	_lanePos.x -= 1
-	if (_lanePos.x == -2): _lanePos.x = -1
-func MoveLeft():
 	_lanePos.x += 1
 	if (_lanePos.x == 2): _lanePos.x = 1
+func MoveLeft():
+	_lanePos.x -= 1
+	if (_lanePos.x == -2): _lanePos.x = -1

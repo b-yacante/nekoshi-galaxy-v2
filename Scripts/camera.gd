@@ -8,8 +8,7 @@ var elapse := 6.0
 var degRot := Vector2.ZERO
 var pos := Vector2.ZERO
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	#Aplicamos rotacion a la camara segun la posicion del personaje
 	var newRotation = rotation.lerp(Vector3(deg_to_rad(degRot.x), deg_to_rad(degRot.y), 0) , delta * elapse)
 	rotation = newRotation

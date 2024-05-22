@@ -1,5 +1,5 @@
 extends RigidBody3D
-
+var speed = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -7,9 +7,10 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _physics_process(delta):
+	apply_central_force(Vector3(0,0,speed))
 
 func _on_area_3d_area_entered(area):
 	 #if(area.name == "CameraWall"):
-		queue_free()
+		#queue_free()
+	pass

@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://btua5xr0f23bt" path="res://Models/Asteroids/asteroids_-_low_poly_0.png" id="2_neaal"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iplge"]
-radius = 0.195653
+radius = 0.431609
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g2fv2"]
-radius = 0.190866
+radius = 0.428538
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8iii2"]
 resource_name = "Asteroid"
@@ -85,7 +85,7 @@ shape = SubResource("SphereShape3D_g2fv2")
 disabled = true
 
 [node name="Purple asteroid" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(-0.491386, 0.665284, -0.562083, 0.804376, 0.594121, 0, 0.333946, -0.452126, -0.827081, 0, 0, 0)
 mesh = SubResource("ArrayMesh_bc80s")
 skeleton = NodePath("")
 

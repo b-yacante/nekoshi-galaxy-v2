@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://dqa7qi0byjtgq"]
+[gd_scene load_steps=25 format=3 uid="uid://dqa7qi0byjtgq"]
 
 [ext_resource type="PackedScene" uid="uid://x1rdol7qkaa" path="res://Scenes/nekoshi.tscn" id="1_lo18u"]
 [ext_resource type="Texture2D" uid="uid://op3ilc8xqct8" path="res://Sprites/Nekoshi_space.png" id="1_mya7d"]
 [ext_resource type="Script" path="res://Scripts/game_controller.gd" id="1_vj31n"]
 [ext_resource type="PackedScene" uid="uid://ddtrxqydoakwy" path="res://Scenes/sun.tscn" id="3_dnbvu"]
 [ext_resource type="Texture2D" uid="uid://btua5xr0f23bt" path="res://Models/Asteroids/asteroids_-_low_poly_0.png" id="4_3gmwi"]
+[ext_resource type="Script" path="res://Scripts/Spawner.gd" id="6_lkie1"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3glud"]
 panorama = ExtResource("1_mya7d")
@@ -259,82 +260,143 @@ shadow_mesh = SubResource("ArrayMesh_ecesb")
 [node name="Space" type="Node"]
 script = ExtResource("1_vj31n")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="SpaceEnviroment" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SpaceEnviroment"]
 environment = SubResource("Environment_bl8y0")
 
-[node name="Nekoshi" parent="." instance=ExtResource("1_lo18u")]
-
-[node name="Sun" parent="." instance=ExtResource("3_dnbvu")]
+[node name="Sun" parent="SpaceEnviroment" instance=ExtResource("3_dnbvu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1487.43, 3656.87, -6915.44)
+skeleton = NodePath("../..")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SpaceEnviroment"]
 transform = Transform3D(0.906308, 0, -0.422618, 0, 1, 0, 0.422618, 0, 0.906308, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Static Asteroids" type="Node" parent="."]
+[node name="Static Asteroids" type="Node" parent="SpaceEnviroment"]
 
-[node name="Purple asteroid" type="MeshInstance3D" parent="Static Asteroids"]
+[node name="Purple asteroid" type="MeshInstance3D" parent="SpaceEnviroment/Static Asteroids"]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 100.095, 345.676, -766.749)
 mesh = SubResource("ArrayMesh_pdemg")
 skeleton = NodePath("")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Static Asteroids/Purple asteroid"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpaceEnviroment/Static Asteroids/Purple asteroid"]
 libraries = {
 "": SubResource("AnimationLibrary_dw78t")
 }
 autoplay = "Asteroid_rotation"
 
-[node name="Green asteroid" type="MeshInstance3D" parent="Static Asteroids"]
+[node name="Green asteroid" type="MeshInstance3D" parent="SpaceEnviroment/Static Asteroids"]
 transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 277.198, -263.449, -799.096)
 mesh = SubResource("ArrayMesh_8pr7i")
 skeleton = NodePath("")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Static Asteroids/Green asteroid"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpaceEnviroment/Static Asteroids/Green asteroid"]
 libraries = {
 "": SubResource("AnimationLibrary_dw78t")
 }
 autoplay = "Asteroid_rotation"
 
-[node name="Brown asteroid" type="MeshInstance3D" parent="Static Asteroids"]
+[node name="Brown asteroid" type="MeshInstance3D" parent="SpaceEnviroment/Static Asteroids"]
 transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, -199.093, 36.4138, -756.742)
 mesh = SubResource("ArrayMesh_2w4hq")
 skeleton = NodePath("")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Static Asteroids/Brown asteroid"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpaceEnviroment/Static Asteroids/Brown asteroid"]
 libraries = {
 "": SubResource("AnimationLibrary_dw78t")
 }
 autoplay = "Asteroid_rotation"
 
-[node name="Moon asteroid" type="MeshInstance3D" parent="Static Asteroids"]
+[node name="Moon asteroid" type="MeshInstance3D" parent="SpaceEnviroment/Static Asteroids"]
 transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, -280.014, -231.75, -463.134)
 mesh = SubResource("ArrayMesh_dllum")
 skeleton = NodePath("")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Static Asteroids/Moon asteroid"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpaceEnviroment/Static Asteroids/Moon asteroid"]
 libraries = {
 "": SubResource("AnimationLibrary_dw78t")
 }
 autoplay = "Asteroid_rotation"
 
-[node name="Green blue asteroid" type="MeshInstance3D" parent="Static Asteroids"]
+[node name="Green blue asteroid" type="MeshInstance3D" parent="SpaceEnviroment/Static Asteroids"]
 transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, -360.457, 407.023, -806.637)
 mesh = SubResource("ArrayMesh_rd27r")
 skeleton = NodePath("")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Static Asteroids/Green blue asteroid"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpaceEnviroment/Static Asteroids/Green blue asteroid"]
 libraries = {
 "": SubResource("AnimationLibrary_dw78t")
 }
 autoplay = "Asteroid_rotation"
 
-[node name="Purple green asteroid" type="MeshInstance3D" parent="Static Asteroids"]
+[node name="Purple green asteroid" type="MeshInstance3D" parent="SpaceEnviroment/Static Asteroids"]
 transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 189.083, 30.8444, -601.886)
 mesh = SubResource("ArrayMesh_10muq")
 skeleton = NodePath("")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Static Asteroids/Purple green asteroid"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpaceEnviroment/Static Asteroids/Purple green asteroid"]
 libraries = {
 "": SubResource("AnimationLibrary_dw78t")
 }
 autoplay = "Asteroid_rotation"
+
+[node name="Nekoshi" parent="." instance=ExtResource("1_lo18u")]
+
+[node name="Spawner" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.3833)
+script = ExtResource("6_lkie1")
+
+[node name="Timer" type="Timer" parent="Spawner"]
+autostart = true
+
+[node name="Cylinders" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.203883)
+
+[node name="1,1" type="CSGCylinder3D" parent="Cylinders"]
+transform = Transform3D(0.48, 0, 0, 0, -2.09815e-08, -0.48, 0, 0.48, -2.09815e-08, 0.65, 0.65, -8.104)
+radius = 0.0235507
+height = 28.8609
+
+[node name="1,0" type="CSGCylinder3D" parent="Cylinders"]
+transform = Transform3D(0.48, 0, 0, 0, -2.09815e-08, -0.48, 0, 0.48, -2.09815e-08, 0.65, 0, -8.104)
+radius = 0.0235507
+height = 28.8609
+
+[node name="0,1" type="CSGCylinder3D" parent="Cylinders"]
+transform = Transform3D(0.48, 0, 0, 0, -2.09815e-08, -0.48, 0, 0.48, -2.09815e-08, 0, 0.65, -8.104)
+radius = 0.0235507
+height = 28.8609
+
+[node name="0,0" type="CSGCylinder3D" parent="Cylinders"]
+transform = Transform3D(0.48, 0, 0, 0, -2.09815e-08, -0.48, 0, 0.48, -2.09815e-08, 0, 3.54243e-07, -8.10412)
+radius = 0.0235507
+height = 28.8609
+
+[node name="0,-1" type="CSGCylinder3D" parent="Cylinders"]
+transform = Transform3D(0.48, 0, 0, 0, -2.09815e-08, -0.48, 0, 0.48, -2.09815e-08, 0, -0.65, -8.104)
+radius = 0.0235507
+height = 28.8609
+
+[node name="-1,0" type="CSGCylinder3D" parent="Cylinders"]
+transform = Transform3D(0.48, 0, 0, 0, -2.09815e-08, -0.48, 0, 0.48, -2.09815e-08, -0.65, 0, -8.104)
+radius = 0.0235507
+height = 28.8609
+
+[node name="-1,-1" type="CSGCylinder3D" parent="Cylinders"]
+transform = Transform3D(0.48, 0, 0, 0, -2.09815e-08, -0.48, 0, 0.48, -2.09815e-08, -0.65, -0.65, -8.104)
+radius = 0.0235507
+height = 28.8609
+
+[node name="-1,1" type="CSGCylinder3D" parent="Cylinders"]
+transform = Transform3D(0.48, 0, 0, 0, -2.09815e-08, -0.48, 0, 0.48, -2.09815e-08, -0.65, 0.65, -8.104)
+radius = 0.0235507
+height = 28.8609
+
+[node name="1,-1" type="CSGCylinder3D" parent="Cylinders"]
+transform = Transform3D(0.48, 0, 0, 0, -2.09815e-08, -0.48, 0, 0.48, -2.09815e-08, 0.65, -0.65, -8.104)
+radius = 0.0235507
+height = 28.8609
+
+[connection signal="SpaceVelocity" from="." to="Spawner" method="_on_space_space_velocity"]
+[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
