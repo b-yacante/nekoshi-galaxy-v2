@@ -1,0 +1,328 @@
+[gd_scene load_steps=20 format=3 uid="uid://8182vbxck5h5"]
+
+[ext_resource type="Script" path="res://Scripts/GUIController.gd" id="1_s7vfk"]
+[ext_resource type="Texture2D" uid="uid://bfdr0w1hj1db" path="res://Sprites/GUI/You_Lose/Score.png" id="2_jtoxk"]
+[ext_resource type="FontFile" uid="uid://yr6wrd10eubr" path="res://Sprites/GUI/SPACE.ttf" id="3_dwmnw"]
+[ext_resource type="Texture2D" uid="uid://dqm6j53we27a6" path="res://Sprites/GUI/Main_UI/Pause_BTN.png" id="4_toyy7"]
+[ext_resource type="Texture2D" uid="uid://j22sus3st40n" path="res://Sprites/GUI/Pause/Window.png" id="5_aibtt"]
+[ext_resource type="Texture2D" uid="uid://cu301ddlbag8i" path="res://Sprites/GUI/Main_Menu/Exit_BTN.png" id="6_4u7un"]
+[ext_resource type="Texture2D" uid="uid://twwqw85kwivr" path="res://Sprites/GUI/Pause/Header.png" id="7_ptdc7"]
+[ext_resource type="Texture2D" uid="uid://bxe0mcvisqm7l" path="res://Sprites/GUI/Buttons/BTNs/Music_BTN.png" id="8_miusn"]
+[ext_resource type="Texture2D" uid="uid://bcd78wdsdjbq" path="res://Sprites/GUI/Buttons/BTNs_Active/Music_BTN.png" id="9_7887q"]
+[ext_resource type="LabelSettings" uid="uid://o22bwl82w3cv" path="res://Sprites/GUI/Label_color_change.tres" id="10_l4nsi"]
+[ext_resource type="Texture2D" uid="uid://xyqvvre12wyb" path="res://Sprites/GUI/Buttons/BTNs/Vibration_BTN.png" id="11_svjcw"]
+[ext_resource type="Texture2D" uid="uid://cfh41pwbxuov7" path="res://Sprites/GUI/Buttons/BTNs_Active/Vibration_BTN.png" id="12_j8nyg"]
+[ext_resource type="Texture2D" uid="uid://bky14t068aww4" path="res://Sprites/GUI/Buttons/BTNs/Replay_BTN.png" id="13_u5nii"]
+[ext_resource type="Texture2D" uid="uid://clewsdeg8bt26" path="res://Sprites/GUI/Buttons/BTNs_Active/Replay_BTN.png" id="14_fdnvv"]
+[ext_resource type="Texture2D" uid="uid://cndjfrpyu1xkm" path="res://Sprites/GUI/You_Lose/Header.png" id="15_yalqg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1vwbu"]
+line_spacing = 2.08165e-12
+font = ExtResource("3_dwmnw")
+font_size = 64
+font_color = Color(0.886275, 0.956863, 0.952941, 1)
+shadow_size = 5
+shadow_color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ndkbk"]
+line_spacing = 2.08165e-12
+font = ExtResource("3_dwmnw")
+font_size = 64
+font_color = Color(0.886275, 0.956863, 0.952941, 1)
+shadow_size = 5
+shadow_color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_r5mb3"]
+font = ExtResource("3_dwmnw")
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_j1twv"]
+line_spacing = 2.08165e-12
+font = ExtResource("3_dwmnw")
+font_size = 150
+font_color = Color(0.886275, 0.956863, 0.952941, 1)
+shadow_size = 5
+shadow_color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s7vfk")
+
+[node name="ScoreContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 265.0
+offset_bottom = 168.0
+
+[node name="ScoreHeader" type="TextureRect" parent="ScoreContainer"]
+layout_mode = 2
+texture = ExtResource("2_jtoxk")
+
+[node name="ScoreLabel" type="Label" parent="ScoreContainer"]
+process_mode = 1
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_1vwbu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_top = 30.0
+offset_right = 50.0
+offset_bottom = 240.0
+grow_horizontal = 0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("4_toyy7")
+
+[node name="PausePanel" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Overlay" type="Panel" parent="PausePanel"]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 1920.0
+
+[node name="PauseWindow" type="TextureRect" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = 400.0
+offset_right = 990.0
+offset_bottom = 1480.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_aibtt")
+
+[node name="ExitButton" type="TextureButton" parent="PausePanel/PauseWindow"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -205.0
+offset_top = -180.0
+offset_right = 205.0
+offset_bottom = -59.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("6_4u7un")
+
+[node name="HeaderPause" type="TextureRect" parent="PausePanel/PauseWindow"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 30.0
+offset_right = 250.0
+offset_bottom = 120.0
+grow_horizontal = 2
+texture = ExtResource("7_ptdc7")
+expand_mode = 1
+
+[node name="MusicButton" type="TextureButton" parent="PausePanel/PauseWindow"]
+layout_mode = 1
+offset_left = 60.0
+offset_top = 200.0
+offset_right = 875.0
+offset_bottom = 350.0
+texture_normal = ExtResource("8_miusn")
+texture_pressed = ExtResource("9_7887q")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="VBoxContainer" type="HBoxContainer" parent="PausePanel/PauseWindow/MusicButton"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -565.0
+offset_top = -50.0
+offset_right = -62.0
+offset_bottom = 50.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="MusicLabel" type="Label" parent="PausePanel/PauseWindow/MusicButton/VBoxContainer"]
+layout_mode = 2
+text = "Music:  "
+label_settings = SubResource("LabelSettings_ndkbk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicValue" type="Label" parent="PausePanel/PauseWindow/MusicButton/VBoxContainer"]
+layout_mode = 2
+text = "On"
+label_settings = ExtResource("10_l4nsi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Vibration" type="TextureButton" parent="PausePanel/PauseWindow"]
+layout_mode = 1
+offset_left = 60.0
+offset_top = 398.0
+offset_right = 875.0
+offset_bottom = 548.0
+texture_normal = ExtResource("11_svjcw")
+texture_pressed = ExtResource("12_j8nyg")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="VBoxContainer" type="HBoxContainer" parent="PausePanel/PauseWindow/Vibration"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -605.0
+offset_top = -50.0
+offset_right = -57.0
+offset_bottom = 50.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="MusicLabel" type="Label" parent="PausePanel/PauseWindow/Vibration/VBoxContainer"]
+layout_mode = 2
+text = "vibration:  "
+label_settings = SubResource("LabelSettings_r5mb3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicValue" type="Label" parent="PausePanel/PauseWindow/Vibration/VBoxContainer"]
+layout_mode = 2
+text = "On"
+label_settings = ExtResource("10_l4nsi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReplayButton" type="TextureButton" parent="PausePanel/PauseWindow"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = 60.0
+offset_right = 105.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("13_u5nii")
+texture_pressed = ExtResource("14_fdnvv")
+
+[node name="LosePanel" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Overlay" type="Panel" parent="LosePanel"]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 1920.0
+
+[node name="LoseWindow" type="TextureRect" parent="LosePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = 400.0
+offset_right = 990.0
+offset_bottom = 1480.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_aibtt")
+
+[node name="ScoreLabelLose" type="Label" parent="LosePanel/LoseWindow"]
+process_mode = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.5
+offset_top = -103.0
+offset_right = 117.5
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_j1twv")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReplayButton" type="TextureButton" parent="LosePanel/LoseWindow"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -280.0
+offset_right = 105.0
+offset_bottom = -70.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("13_u5nii")
+texture_pressed = ExtResource("14_fdnvv")
+
+[node name="HeaderLose" type="TextureRect" parent="LosePanel/LoseWindow"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 30.0
+offset_right = 250.0
+offset_bottom = 120.0
+grow_horizontal = 2
+texture = ExtResource("15_yalqg")
+expand_mode = 1
+
+[node name="ScoreImgText" type="TextureRect" parent="LosePanel/LoseWindow"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -290.0
+offset_right = 300.0
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jtoxk")
+expand_mode = 1
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="PausePanel/PauseWindow/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="PausePanel/PauseWindow/ReplayButton" to="." method="_on_replay_button_pressed"]
+[connection signal="pressed" from="LosePanel/LoseWindow/ReplayButton" to="." method="_on_replay_button_pressed"]

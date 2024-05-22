@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://o22bwl82w3cv"]
+
+[ext_resource type="FontFile" uid="uid://yr6wrd10eubr" path="res://Sprites/GUI/SPACE.ttf" id="1_qb1uo"]
+
+[resource]
+font = ExtResource("1_qb1uo")
+font_size = 64
+font_color = Color(0, 0.713726, 0.396078, 1)

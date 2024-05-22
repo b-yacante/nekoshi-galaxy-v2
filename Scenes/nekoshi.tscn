@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://x1rdol7qkaa"]
+[gd_scene load_steps=3 format=3 uid="uid://x1rdol7qkaa"]
 
 [ext_resource type="Script" path="res://Scripts/nekoshi.gd" id="1_1s1yb"]
-[ext_resource type="Script" path="res://Scripts/camera.gd" id="2_77pp0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_04j3j"]
 size = Vector3(0.233398, 0.241211, 0.118164)
@@ -13,11 +12,3 @@ script = ExtResource("1_1s1yb")
 shape = SubResource("BoxShape3D_04j3j")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-
-[node name="CameraPivot" type="Marker3D" parent="."]
-
-[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
-far = 8000.0
-script = ExtResource("2_77pp0")
-
-[connection signal="LanePosition" from="." to="CameraPivot/Camera3D" method="_on_nekoshi_lane_position"]

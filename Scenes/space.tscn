@@ -1,11 +1,13 @@
-[gd_scene load_steps=25 format=3 uid="uid://dqa7qi0byjtgq"]
+[gd_scene load_steps=27 format=3 uid="uid://dqa7qi0byjtgq"]
 
 [ext_resource type="PackedScene" uid="uid://x1rdol7qkaa" path="res://Scenes/nekoshi.tscn" id="1_lo18u"]
 [ext_resource type="Texture2D" uid="uid://op3ilc8xqct8" path="res://Sprites/Nekoshi_space.png" id="1_mya7d"]
 [ext_resource type="Script" path="res://Scripts/game_controller.gd" id="1_vj31n"]
-[ext_resource type="PackedScene" uid="uid://ddtrxqydoakwy" path="res://Scenes/sun.tscn" id="3_dnbvu"]
+[ext_resource type="PackedScene" uid="uid://ben0q6ui37r1x" path="res://Scenes/sun.tscn" id="3_dnbvu"]
 [ext_resource type="Texture2D" uid="uid://btua5xr0f23bt" path="res://Models/Asteroids/asteroids_-_low_poly_0.png" id="4_3gmwi"]
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="6_26sj6"]
 [ext_resource type="Script" path="res://Scripts/Spawner.gd" id="6_lkie1"]
+[ext_resource type="PackedScene" uid="uid://8182vbxck5h5" path="res://Scenes/gui.tscn" id="8_jvu43"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3glud"]
 panorama = ExtResource("1_mya7d")
@@ -343,6 +345,12 @@ autoplay = "Asteroid_rotation"
 
 [node name="Nekoshi" parent="." instance=ExtResource("1_lo18u")]
 
+[node name="CameraPivot" type="Marker3D" parent="Nekoshi"]
+
+[node name="Camera3D" type="Camera3D" parent="Nekoshi/CameraPivot"]
+far = 8000.0
+script = ExtResource("6_26sj6")
+
 [node name="Spawner" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.3833)
 script = ExtResource("6_lkie1")
@@ -398,5 +406,10 @@ transform = Transform3D(0.48, 0, 0, 0, -2.09815e-08, -0.48, 0, 0.48, -2.09815e-0
 radius = 0.0235507
 height = 28.8609
 
+[node name="GUI" parent="." instance=ExtResource("8_jvu43")]
+process_mode = 3
+
 [connection signal="SpaceVelocity" from="." to="Spawner" method="_on_space_space_velocity"]
+[connection signal="LanePosition" from="Nekoshi" to="Nekoshi/CameraPivot/Camera3D" method="_on_nekoshi_lane_position"]
+[connection signal="UpdateLife" from="Nekoshi" to="GUI" method="_on_nekoshi_update_life"]
 [connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
