@@ -11,6 +11,5 @@ func _physics_process(delta):
 	apply_central_force(Vector3(0,0,speed))
 
 func _on_area_3d_area_entered(area):
-	 #if(area.name == "CameraWall"):
-		#queue_free()
-	pass
+	if area.name == "NekoshiArea":
+		queue_free()

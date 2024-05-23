@@ -75,9 +75,9 @@ _data = {
 gravity_scale = 0.0
 script = ExtResource("1_3hr46")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="ObstacleArea" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ObstacleArea"]
 shape = SubResource("SphereShape3D_iplge")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -95,4 +95,4 @@ libraries = {
 }
 autoplay = "Asteroid_rotation"
 
-[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_entered" from="ObstacleArea" to="." method="_on_area_3d_area_entered"]

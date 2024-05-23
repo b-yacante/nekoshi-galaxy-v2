@@ -39,10 +39,11 @@ func _update_score(time: float):
 
 
 func _on_nekoshi_update_life(life):
-	if life == 0:
+	if life <= 0:
 		is_dead = true
 		score_label_lose.text = str(floor(score))
 		lose_panel.visible = true
+		get_tree().paused = true
 
 
 func _on_pause_button_pressed():

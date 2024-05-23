@@ -38,8 +38,7 @@ func CalculateSwipe(_swipeEnd: Vector2):
 
 func TakeDamage(damage: int):
 	life = life - damage
-	UpdateLife.emit()
-	if(life <= 0): queue_free()
+	UpdateLife.emit(life)
 
 func MoveUp():
 	_lanePos.y += 1
@@ -53,3 +52,8 @@ func MoveRight():
 func MoveLeft():
 	_lanePos.x -= 1
 	if (_lanePos.x == -2): _lanePos.x = -1
+
+
+func _on_nekoshi_area_area_entered(area):
+	if area.name == "ObstacleArea":
+		TakeDamage(1)

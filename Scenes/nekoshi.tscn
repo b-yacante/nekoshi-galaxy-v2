@@ -1,14 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://x1rdol7qkaa"]
+[gd_scene load_steps=4 format=3 uid="uid://x1rdol7qkaa"]
 
 [ext_resource type="Script" path="res://Scripts/nekoshi.gd" id="1_1s1yb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_04j3j"]
-size = Vector3(0.233398, 0.241211, 0.118164)
+size = Vector3(0.172852, 0.163086, 0.118164)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6t3ir"]
 
 [node name="Nekoshi" type="CharacterBody3D"]
 script = ExtResource("1_1s1yb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_04j3j")
+disabled = true
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+
+[node name="NekoshiArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NekoshiArea"]
+shape = SubResource("SphereShape3D_6t3ir")
+
+[connection signal="area_entered" from="NekoshiArea" to="." method="_on_nekoshi_area_area_entered"]
