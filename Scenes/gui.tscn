@@ -234,6 +234,7 @@ texture_normal = ExtResource("13_u5nii")
 texture_pressed = ExtResource("14_fdnvv")
 
 [node name="LosePanel" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0

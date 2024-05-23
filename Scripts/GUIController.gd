@@ -33,14 +33,12 @@ func _update_score(time: float):
 		#desactivar lose panel
 		score = time / score_per_time
 		score_label.text =  str(floor(score)) 
-	else:
-		score_container.visible = false
-		#activar lose panel
 
 
 func _on_nekoshi_update_life(life):
 	if life <= 0:
 		is_dead = true
+		score_container.visible = false
 		score_label_lose.text = str(floor(score))
 		lose_panel.visible = true
 		get_tree().paused = true

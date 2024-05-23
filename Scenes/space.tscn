@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dqa7qi0byjtgq"]
+[gd_scene load_steps=28 format=3 uid="uid://dqa7qi0byjtgq"]
 
 [ext_resource type="PackedScene" uid="uid://x1rdol7qkaa" path="res://Scenes/nekoshi.tscn" id="1_lo18u"]
 [ext_resource type="Texture2D" uid="uid://op3ilc8xqct8" path="res://Sprites/Nekoshi_space.png" id="1_mya7d"]
@@ -259,6 +259,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ecesb")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_qkowg"]
+size = Vector3(1.94434, 2.80176, 0.217773)
+
 [node name="Space" type="Node"]
 script = ExtResource("1_vj31n")
 
@@ -408,6 +411,13 @@ height = 28.8609
 
 [node name="GUI" parent="." instance=ExtResource("8_jvu43")]
 process_mode = 3
+
+[node name="DestructionWall" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.722514)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DestructionWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.391113)
+shape = SubResource("BoxShape3D_qkowg")
 
 [connection signal="SpaceVelocity" from="." to="Spawner" method="_on_space_space_velocity"]
 [connection signal="LanePosition" from="Nekoshi" to="Nekoshi/CameraPivot/Camera3D" method="_on_nekoshi_lane_position"]

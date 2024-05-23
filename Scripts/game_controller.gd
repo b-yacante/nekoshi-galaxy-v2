@@ -1,9 +1,9 @@
 extends Node
 
 signal SpaceVelocity(vel: int)
+@export var progressTime: float = 5
 
 var multVelocity: float = 1
-var progressTime: float = 5
 var timeElapse = 0
 
 func _ready():
