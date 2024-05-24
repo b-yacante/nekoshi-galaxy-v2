@@ -2,20 +2,31 @@ extends CharacterBody3D
 signal LanePosition(lanePos: Vector2i)
 signal UpdateLife(life: int)
 
-var life: int = 3
+var life: int = 1
 #MOVEMENT
 @export var speed = 2
 const LANE_DISTANCE = 0.65
 var _lanePos =  Vector2i(0,0) # -1: left/up | 0: middle | 1: right/down
 var targetVelocity
+var max_speed = 5
+var current_speed = speed
+var max_time = GameController.time_to_max_speed
+var elapse_time = 0
 #SWIPE
 var _swipeLength = 100
 var _swipeStart = Vector2.ZERO
 var isSwiping = false
 
+func _process(delta):
+	elapse_time += delta
+	var progression_ratio = elapse_time / max_time
+	progression_ratio = clamp(progression_ratio,0,1)
+	
+	current_speed = speed + (max_speed - speed) * progression_ratio
+
 func _physics_process(delta):
-	var targetPosition = Vector3(_lanePos.x * LANE_DISTANCE, _lanePos.y, global_position.z)
-	var new_position = position.lerp(targetPosition, speed * delta)
+	var targetPosition = Vector3(_lanePos.x * LANE_DISTANCE, _lanePos.y * LANE_DISTANCE, global_position.z)
+	var new_position = position.lerp(targetPosition, current_speed * delta)
 	global_position = new_position
 
 func _input(event):

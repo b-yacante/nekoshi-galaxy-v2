@@ -6,7 +6,7 @@
 size = Vector3(0.121094, 0.111328, 0.118164)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6t3ir"]
-radius = 0.0583582
+radius = 0.0674613
 
 [node name="Nekoshi" type="CharacterBody3D"]
 script = ExtResource("1_1s1yb")

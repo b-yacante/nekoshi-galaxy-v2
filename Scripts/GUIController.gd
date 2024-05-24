@@ -53,10 +53,17 @@ func _on_pause_button_pressed():
 
 func _on_exit_button_pressed():
 	is_paused = false
-	pause_panel.visible = false
 	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Scenes/start_screen.tscn")
 
 
 func _on_replay_button_pressed():
+	is_paused = false
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+
+
+func _on_resume_button_pressed():
+	is_paused = false
+	pause_panel.visible = false
+	get_tree().paused = false

@@ -7,4 +7,4 @@ func _on_start_button_pressed():
 
 
 func _on_exit_button_pressed():
-	pass # TODO: salir de la aplicacion
+	get_tree().quit()

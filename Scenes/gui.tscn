@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://8182vbxck5h5"]
+[gd_scene load_steps=22 format=3 uid="uid://8182vbxck5h5"]
 
 [ext_resource type="Script" path="res://Scripts/GUIController.gd" id="1_s7vfk"]
 [ext_resource type="Texture2D" uid="uid://bfdr0w1hj1db" path="res://Sprites/GUI/You_Lose/Score.png" id="2_jtoxk"]
@@ -12,8 +12,10 @@
 [ext_resource type="LabelSettings" uid="uid://o22bwl82w3cv" path="res://Sprites/GUI/Label_color_change.tres" id="10_l4nsi"]
 [ext_resource type="Texture2D" uid="uid://xyqvvre12wyb" path="res://Sprites/GUI/Buttons/BTNs/Vibration_BTN.png" id="11_svjcw"]
 [ext_resource type="Texture2D" uid="uid://cfh41pwbxuov7" path="res://Sprites/GUI/Buttons/BTNs_Active/Vibration_BTN.png" id="12_j8nyg"]
+[ext_resource type="Texture2D" uid="uid://b2wam8mn6kvt1" path="res://Sprites/GUI/Buttons/BTNs/Play_BTN.png" id="13_nmrxk"]
 [ext_resource type="Texture2D" uid="uid://bky14t068aww4" path="res://Sprites/GUI/Buttons/BTNs/Replay_BTN.png" id="13_u5nii"]
 [ext_resource type="Texture2D" uid="uid://clewsdeg8bt26" path="res://Sprites/GUI/Buttons/BTNs_Active/Replay_BTN.png" id="14_fdnvv"]
+[ext_resource type="Texture2D" uid="uid://dkfw6fc5mnbic" path="res://Sprites/GUI/Buttons/BTNs_Active/Play_BTN.png" id="14_snf65"]
 [ext_resource type="Texture2D" uid="uid://cndjfrpyu1xkm" path="res://Sprites/GUI/You_Lose/Header.png" id="15_yalqg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1vwbu"]
@@ -86,7 +88,6 @@ scale = Vector2(0.6, 0.6)
 texture_normal = ExtResource("4_toyy7")
 
 [node name="PausePanel" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -217,7 +218,7 @@ label_settings = ExtResource("10_l4nsi")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ReplayButton" type="TextureButton" parent="PausePanel/PauseWindow"]
+[node name="ResumeButton" type="TextureButton" parent="PausePanel/PauseWindow"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -230,8 +231,8 @@ offset_right = 105.0
 offset_bottom = 270.0
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("13_u5nii")
-texture_pressed = ExtResource("14_fdnvv")
+texture_normal = ExtResource("13_nmrxk")
+texture_pressed = ExtResource("14_snf65")
 
 [node name="LosePanel" type="Control" parent="."]
 visible = false
@@ -325,5 +326,5 @@ expand_mode = 1
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="PausePanel/PauseWindow/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="PausePanel/PauseWindow/ReplayButton" to="." method="_on_replay_button_pressed"]
+[connection signal="pressed" from="PausePanel/PauseWindow/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="LosePanel/LoseWindow/ReplayButton" to="." method="_on_replay_button_pressed"]
