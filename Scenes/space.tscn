@@ -672,7 +672,8 @@ material = SubResource("StandardMaterial3D_2ohlw")
 process_mode = 3
 
 [node name="DestructionWall" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.229038)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.679263)
+collision_layer = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DestructionWall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.391113)

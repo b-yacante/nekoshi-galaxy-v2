@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2n0u1qtil246"]
+[gd_scene load_steps=5 format=3 uid="uid://b2n0u1qtil246"]
 
 [ext_resource type="ArrayMesh" uid="uid://cgc0spi16q231" path="res://Models/mark-asteroid.obj" id="1_tb3i3"]
 [ext_resource type="Material" uid="uid://c1r0n0ltpnhob" path="res://Models/blue_asteroid_mark.tres" id="2_rtas0"]
+[ext_resource type="Material" uid="uid://t8s37hr12ki1" path="res://Models/yellow_asteroid_mark.tres" id="3_bp6gq"]
+[ext_resource type="Material" uid="uid://bwvx4lhf3utcs" path="res://Models/green_asteroid_mark.tres" id="4_bb4bo"]
 
 [node name="Asteroid Mark" type="Node3D"]
 
@@ -14,5 +16,5 @@ surface_material_override/2 = ExtResource("2_rtas0")
 surface_material_override/3 = ExtResource("2_rtas0")
 surface_material_override/4 = ExtResource("2_rtas0")
 surface_material_override/5 = ExtResource("2_rtas0")
-surface_material_override/6 = ExtResource("2_rtas0")
-surface_material_override/7 = ExtResource("2_rtas0")
+surface_material_override/6 = ExtResource("3_bp6gq")
+surface_material_override/7 = ExtResource("4_bb4bo")
