@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c26fhmtg3supl"
 path.s3tc="res://.godot/imported/Blue_crystal1.png-d9ae32ff90063eafb0ea7c9708295d4c.s3tc.ctex"
+path.etc2="res://.godot/imported/Blue_crystal1.png-d9ae32ff90063eafb0ea7c9708295d4c.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Sprites/Blue_crystal1.png"
-dest_files=["res://.godot/imported/Blue_crystal1.png-d9ae32ff90063eafb0ea7c9708295d4c.s3tc.ctex"]
+dest_files=["res://.godot/imported/Blue_crystal1.png-d9ae32ff90063eafb0ea7c9708295d4c.s3tc.ctex", "res://.godot/imported/Blue_crystal1.png-d9ae32ff90063eafb0ea7c9708295d4c.etc2.ctex"]
 
 [params]
 

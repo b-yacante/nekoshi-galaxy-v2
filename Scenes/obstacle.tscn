@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://egklvswqxxgf"]
+[gd_scene load_steps=5 format=3 uid="uid://egklvswqxxgf"]
 
 [ext_resource type="Script" path="res://Scripts/obstacle.gd" id="1_3hr46"]
+[ext_resource type="PackedScene" uid="uid://b2n0u1qtil246" path="res://Scenes/asteroid_mark.tscn" id="2_aldig"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iplge"]
 radius = 0.190908
@@ -23,5 +24,7 @@ shape = SubResource("SphereShape3D_g2fv2")
 disabled = true
 
 [node name="MeshInstance" type="Node3D" parent="."]
+
+[node name="Asteroid Mark" parent="." instance=ExtResource("2_aldig")]
 
 [connection signal="area_entered" from="ObstacleArea" to="." method="_on_area_3d_area_entered"]

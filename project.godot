@@ -23,11 +23,23 @@ GameController="*res://Scripts/game_controller.gd"
 
 window/size/viewport_width=1080
 window/size/viewport_height=1920
+window/size/initial_position_type=0
+window/subwindows/embed_subwindows=false
+window/stretch/mode="viewport"
+window/stretch/aspect="ignore"
+window/handheld/orientation=1
 
 [dotnet]
 
 project/assembly_name="Nekoshi Galaxy v2"
 
+[filesystem]
+
+import/fbx/enabled=false
+
 [rendering]
 
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_s3tc_bptc=true
+textures/vram_compression/import_etc2_astc=true

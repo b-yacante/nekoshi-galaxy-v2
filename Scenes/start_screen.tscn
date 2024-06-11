@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dxihjlb3w73iw"]
+[gd_scene load_steps=27 format=3 uid="uid://dxihjlb3w73iw"]
 
 [ext_resource type="Texture2D" uid="uid://op3ilc8xqct8" path="res://Sprites/Nekoshi_space.png" id="1_4wexy"]
 [ext_resource type="PackedScene" uid="uid://ben0q6ui37r1x" path="res://Scenes/sun.tscn" id="2_u81jc"]
@@ -25,6 +25,10 @@ adjustment_enabled = true
 adjustment_brightness = 1.05
 adjustment_contrast = 1.05
 adjustment_saturation = 1.1
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_2rf4w"]
+resource_local_to_scene = true
+dof_blur_far_distance = 7158.82
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8iii2"]
 resource_name = "Asteroid"
@@ -264,6 +268,7 @@ shadow_mesh = SubResource("ArrayMesh_ecesb")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SpaceEnviroment"]
 environment = SubResource("Environment_gmy8j")
+camera_attributes = SubResource("CameraAttributesPractical_2rf4w")
 
 [node name="Sun" parent="SpaceEnviroment" instance=ExtResource("2_u81jc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1000, 2000, -6915.44)
@@ -342,6 +347,7 @@ libraries = {
 autoplay = "Asteroid_rotation"
 
 [node name="CameraMenu" type="Camera3D" parent="."]
+keep_aspect = 0
 far = 8000.0
 
 [node name="Menu" type="Control" parent="."]

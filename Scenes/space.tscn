@@ -599,6 +599,8 @@ autoplay = "rotate_enviroment"
 [node name="CameraPivot" type="Marker3D" parent="Nekoshi"]
 
 [node name="Camera3D" type="Camera3D" parent="Nekoshi/CameraPivot"]
+visibility_parent = NodePath("../../../SpaceEnviroment/RotateEnviroment/Sun")
+keep_aspect = 0
 far = 8000.0
 script = ExtResource("6_26sj6")
 
@@ -670,7 +672,7 @@ material = SubResource("StandardMaterial3D_2ohlw")
 process_mode = 3
 
 [node name="DestructionWall" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.722514)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.229038)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DestructionWall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.391113)
